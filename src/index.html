@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" > -->
+    <title>Memory Grid</title>
+    <style>
+        body{
+        background-color: ghostwhite;
+      }
+      .game {
+          width: 60%;
+          margin: 30px auto;
+      }
+      .clear{
+          clear: both;
+      }
+      .sidebar{
+          width: 20%;
+          height: 600px;
+          float: left;
+          border:1px solid #058BDA
+      }
+      .grid {
+        height: 600px;
+        float: left;
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.37);
+      }
+      .row {
+        width: 600px;
+      }
+      .cell {
+          width: 118px;
+          height: 118px;
+          border: 1px solid;
+          float: left;
+      }
+      .incorrect {
+          background-color: red;
+      }
+      .correct {
+          background-color: green;
+      }
+      .active { background-color: #058BDA; }
+      .original { background-color: rgb(218, 151, 5); }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>
