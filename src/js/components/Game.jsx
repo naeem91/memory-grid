@@ -31,6 +31,9 @@ class Game extends React.Component {
             }
         }
     }
+    restartGame(){
+        window.location.reload();
+    }
     componentDidMount(){
         setTimeout(() => {
             this.setState({gameState: GameState.READY});
@@ -56,7 +59,7 @@ class Game extends React.Component {
     render(){
         return(
             <div className="game">
-                <SideBar guessSize={this.props.guessSize} incorrectAllowed={this.props.incorrectAllowed} {...this.state} />
+                <SideBar guessSize={this.props.guessSize} incorrectAllowed={this.props.incorrectAllowed} restartGame={this.restartGame.bind(this)} {...this.state} />
                 <Grid size={this.props.gridSize} highLightSize={this.props.guessSize} recordGuess={this.recordGuess.bind(this)} {...this.state} /> 
                 <div className="clear" />
             </div>
