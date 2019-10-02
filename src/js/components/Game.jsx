@@ -1,6 +1,6 @@
 import React from "react";
 
-import GameState from '../constants.js'
+import {GameState} from '../constants.js'
 import SideBar from './Sidebar.jsx'
 import Grid from './Grid.jsx'
 
@@ -15,6 +15,7 @@ class Game extends React.Component {
             time: this.props.timeAllowed
         };
         this.guesses = {correct: [], incorrect: []};
+        this.gameController = this.props.gameController;
     }
     recordGuess(guess){
         if(guess.correct === true){
@@ -22,6 +23,7 @@ class Game extends React.Component {
             this.setState({'cellsLeft': this.state.cellsLeft - 1})
             if(this.guesses.correct.length >= this.props.guessSize){
                 this.setState({gameState: GameState.WON});
+                this.nextLevel();
             }
         }else{
             this.guesses.incorrect.push(guess);
@@ -31,8 +33,11 @@ class Game extends React.Component {
             }
         }
     }
+    nextLevel(){
+        this.gameController.increaseLevel();
+    }
     restartGame(){
-        window.location.reload();
+        this.gameController.restart();
     }
     componentDidMount(){
         setTimeout(() => {
@@ -59,7 +64,12 @@ class Game extends React.Component {
     render(){
         return(
             <div className="game">
-                <SideBar guessSize={this.props.guessSize} incorrectAllowed={this.props.incorrectAllowed} restartGame={this.restartGame.bind(this)} {...this.state} />
+                <SideBar 
+                guessSize={this.props.guessSize} 
+                incorrectAllowed={this.props.incorrectAllowed} 
+                level={this.props.level}
+                restartGame={this.restartGame.bind(this)} 
+                {...this.state} />
                 <Grid size={this.props.gridSize} highLightSize={this.props.guessSize} recordGuess={this.recordGuess.bind(this)} {...this.state} /> 
                 <div className="clear" />
             </div>

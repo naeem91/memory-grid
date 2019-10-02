@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 
 import Row from "./Row.jsx";
 import Cell from "./Cell.jsx";
@@ -10,7 +11,7 @@ class Grid extends React.Component {
         this.cells = [];
         this.activeCells = [];
         this.grid = this.constructGrid(this.props.size);
-        this.randomSelect(this.props.size, this.props.highLightSize);
+        this.randomSelect(this.props.highLightSize);
     }
     constructGrid(size){
         let grid = [];
@@ -26,18 +27,8 @@ class Grid extends React.Component {
 
         return grid;
     }
-    getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-    }
-    randomSelect(size, highLightSize){
-        let randomSelected = [];
-        for(let i=0; i<highLightSize; i++){
-            randomSelected.push(this.cells[this.getRandomInt(0, size**2)]);
-        }
-
-        this.activeCells = randomSelected;
+    randomSelect(highLightSize){
+        this.activeCells = _.sampleSize(this.cells, highLightSize);
     }
     render (){
         return (

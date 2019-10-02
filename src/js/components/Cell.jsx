@@ -1,6 +1,6 @@
 import React from "react";
 
-import GameState from '../constants.js'
+import {GameState} from '../constants.js'
 
 
 class Cell extends React.Component {

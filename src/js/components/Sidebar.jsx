@@ -1,5 +1,5 @@
 import React from "react";
-import GameState from '../constants.js'
+import {GameState} from '../constants.js'
 
 class SideBar extends React.Component {
     handleRestart(){
@@ -16,6 +16,7 @@ class SideBar extends React.Component {
 
         return (
             <div className="sidebar">
+               <div>{`Level: ${this.props.level}`}</div> 
                <div>{`Status: ${status}`}</div>
                <div>{`Cells Left: ${this.props.cellsLeft}`}</div>
                <div>{`Wrong Guess: ${this.props.wrongGuess}/${this.props.incorrectAllowed}`}</div>
