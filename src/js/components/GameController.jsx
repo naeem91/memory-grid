@@ -27,7 +27,7 @@ class GameController extends React.Component{
     }
     render(){
         return (
-            <div className="game-controller">
+            <div className="game-controller container">
                 <Game 
                     key={this.state.gameId} 
                     gameController={this.controller} 

@@ -2,45 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" > -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Memory Grid</title>
     <style>
-        body{
-        background-color: ghostwhite;
-      }
-      .game {
-          width: 80%;
-          margin: 10px auto;
-      }
-      .clear{
-          clear: both;
-      }
-      .hidden{
-          display: none;
-      }
-      .sidebar{
-          width: 20%;
-          float: left;
-          border:1px solid #058BDA
-      }
-      .grid {
-        float: left;
-        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.37);
-      }
-      .cell {
-          width: 110px;
+        li{
+            cursor: default;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .row{
+            margin-bottom: 0;
+        }
+        .grid{
+            margin-top: 8px;
+        }
+        .card-panel{
+            margin: 0;
+        }
+        .cell {
           height: 110px;
-          border: 1px solid;
-          float: left;
-      }
-      .incorrect {
+        }
+        .incorrect {
           background-color: red;
-      }
-      .correct {
+        }
+        .correct {
           background-color: green;
-      }
-      .active { background-color: #058BDA; }
-      .original { background-color: rgb(218, 151, 5); }
+        }
+        .active { background-color: #058BDA; }
+        .original { background-color: rgb(218, 151, 5); }
     </style>
 </head>
 <body>

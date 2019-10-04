@@ -20,7 +20,7 @@ class Game extends React.Component {
     recordGuess(guess){
         if(guess.correct === true){
             this.guesses.correct.push(guess);
-            this.setState({'cellsLeft': this.state.cellsLeft - 1})
+            this.setState({'cellsLeft': this.state.cellsLeft - 1});
             if(this.guesses.correct.length >= this.props.guessSize){
                 this.setState({gameState: GameState.WON});
                 this.nextLevel();
@@ -63,7 +63,7 @@ class Game extends React.Component {
     }
     render(){
         return(
-            <div className="game">
+            <div className="game row">
                 <SideBar 
                 guessSize={this.props.guessSize} 
                 incorrectAllowed={this.props.incorrectAllowed} 
@@ -71,7 +71,6 @@ class Game extends React.Component {
                 restartGame={this.restartGame.bind(this)} 
                 {...this.state} />
                 <Grid size={this.props.gridSize} highLightSize={this.props.guessSize} recordGuess={this.recordGuess.bind(this)} {...this.state} /> 
-                <div className="clear" />
             </div>
         )
     }

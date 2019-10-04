@@ -32,7 +32,7 @@ class Grid extends React.Component {
     }
     render (){
         return (
-            <div className="grid"> 
+            <div className="grid col s10">
                 {
                     this.grid.map((row, ri) => 
                     (

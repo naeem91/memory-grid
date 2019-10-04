@@ -26,7 +26,7 @@ class Cell extends React.Component {
         return this.props.selectedCells.indexOf(this.props.id) >= 0;
     }
     render(){
-        let classes = "cell";
+        let classes = "cell col s2 card-panel";
 
         if(this.props.gameState == GameState.MEMORIZE && this.isActive()){
             classes += " active";
@@ -34,6 +34,9 @@ class Cell extends React.Component {
 
         if(this.props.gameState == GameState.RECALL){
             classes += ` ${this.state.guess}`;
+            if(!this.state.guess) {
+                classes += ' hoverable';
+            }
         }
 
         if(this.props.gameState == GameState.ENDED && this.isActive()){
