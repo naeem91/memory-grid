@@ -44,6 +44,11 @@ class SideBar extends React.Component {
                 triesIcon = `looks_${triesLeft}`;
         }
 
+        let cellsIcon = `filter_${this.props.cellsLeft}`;
+        if(this.props.cellsLeft == 0) {
+            cellsIcon = 'check';
+        }
+
         return (
             <div className="sidebar col s2">
                <ul className="collection">
@@ -57,15 +62,15 @@ class SideBar extends React.Component {
                        </span>
                    </li>
                    <li class="collection-item">
-                       Boxes
-                       <span class="secondary-content">
-                        <i class="material-icons">{`filter_${this.props.guessSize}`}</i>
-                       </span>
-                   </li>
-                    <li class="collection-item">
                        Time
                        <span class="secondary-content">
                         <i class="material-icons">{timeIcon}</i>
+                       </span>
+                   </li>
+                   <li class="collection-item">
+                       Cells
+                       <span class="secondary-content">
+                        <i class="material-icons">{cellsIcon}</i>
                        </span>
                    </li>
                    <li class="collection-item">

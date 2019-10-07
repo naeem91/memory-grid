@@ -1,8 +1,9 @@
 import React from "react";
 
-import {GameState} from '../constants.js'
+import { GameState } from '../constants.js'
 import SideBar from './Sidebar.jsx'
 import Grid from './Grid.jsx'
+import StatusModal from './StatusModal.jsx';
 
 
 class Game extends React.Component {
@@ -12,7 +13,8 @@ class Game extends React.Component {
             gameState: GameState.LOADING, 
             wrongGuess: 0,
             cellsLeft: this.props.guessSize,
-            time: this.props.timeAllowed
+            time: this.props.timeAllowed,
+            modalOpen: false
         };
         this.guesses = {correct: [], incorrect: []};
         this.gameController = this.props.gameController;
@@ -22,14 +24,18 @@ class Game extends React.Component {
             this.guesses.correct.push(guess);
             this.setState({'cellsLeft': this.state.cellsLeft - 1});
             if(this.guesses.correct.length >= this.props.guessSize){
-                this.setState({gameState: GameState.WON});
-                this.nextLevel();
+                setTimeout(()=>{
+                    this.setState({gameState: GameState.WON});
+                    this.nextLevel();
+                }, 500);
             }
         }else{
             this.guesses.incorrect.push(guess);
             this.setState({wrongGuess: this.state.wrongGuess + 1});
             if(this.guesses.incorrect.length >= this.props.incorrectAllowed){
-                this.setState({gameState: GameState.ENDED});
+                setTimeout(()=>{
+                    this.setState({gameState: GameState.ENDED});
+                }, 500);
             }
         }
     }
@@ -40,37 +46,60 @@ class Game extends React.Component {
         this.gameController.restart();
     }
     componentDidMount(){
+        this.setState({gameState: GameState.READY, modalOpen: true});
         setTimeout(() => {
-            this.setState({gameState: GameState.READY});
+            this.setState({gameState: GameState.MEMORIZE, modalOpen: true});
             setTimeout(() => {
-                this.setState({gameState: GameState.MEMORIZE});
+                this.setState({gameState: GameState.RECALL, modalOpen: false});
                 setTimeout(() => {
-                    this.setState({gameState: GameState.RECALL});
                     let tick = setInterval(() => {
                         if(this.state.gameState == GameState.ENDED || this.state.gameState == GameState.WON){
                             clearInterval(tick);
+                            this.setState({modalOpen: true});
                             return;
                         }
-                        this.setState({time: this.state.time - 1})
+                        this.setState({time: this.state.time - 1});
                         if(this.state.time <= 0){
                             clearInterval(tick);
-                            this.setState({gameState: GameState.ENDED});
+                            this.setState({gameState: GameState.ENDED, modalOpen: true});
                         }
                     }, 1000);
                 }, 1000);
-            }, 1000);
+            }, this.props.highlighTime * 1000);
         }, 1000);
     }
     render(){
+        let restartButton = '';
+        let statusText = '';
+        if(this.state.gameState == GameState.ENDED){
+            restartButton = (
+                <a class="waves-effect waves-light btn-small" onClick={this.restartGame.bind(this)}>
+                <i class="material-icons left">autorenew</i>Retry</a>);
+        }
+        if(this.state.gameState == GameState.READY){
+            statusText = GameState.READY.toUpperCase();
+        }
+        
         return(
             <div className="game row">
+                <StatusModal
+                    modalOpen={this.state.modalOpen}
+                    title={statusText}
+                    description={restartButton}
+                />
                 <SideBar 
-                guessSize={this.props.guessSize} 
-                incorrectAllowed={this.props.incorrectAllowed} 
-                level={this.props.level}
-                restartGame={this.restartGame.bind(this)} 
-                {...this.state} />
-                <Grid size={this.props.gridSize} highLightSize={this.props.guessSize} recordGuess={this.recordGuess.bind(this)} {...this.state} /> 
+                    guessSize={this.props.guessSize}
+                    incorrectAllowed={this.props.incorrectAllowed}
+                    level={this.props.level}
+                    restartGame={this.restartGame.bind(this)}
+                    {...this.state}
+                />
+                <Grid
+                    size={this.props.gridSize}
+                    highLightSize={this.props.guessSize}
+                    recordGuess={this.recordGuess.bind(this)}
+                    {...this.state}
+                />
             </div>
         )
     }
