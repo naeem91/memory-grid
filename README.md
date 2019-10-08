@@ -13,5 +13,6 @@ Some cells on the grid will be highlighted for a brief moment of time, you need 
 ## [Play Here](https://naeem91.github.io/memory-grid/)
 
 ## Develop
-- Install node, npm and package dependencies
+- Install node and npm 
+- Install package dependencies. run `npm install` in root directory
 - Running `npm run build` will build the game in the `dist` and `docs` directories
