@@ -1,7 +1,7 @@
 <h1 align="center">
   <img src="docs/src/img/logo.png?raw=true" width="60" title="Logo" />
 </h1>
-![CircleCI](https://img.shields.io/circleci/build/github/naeem91/memory-grid)
+<img src="https://img.shields.io/circleci/build/github/naeem91/memory-grid" />
 
 ReactJS based memory grid game.
 
