@@ -1,4 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const FileManagerPlugin = require('filemanager-webpack-plugin');
+
 module.exports = {
   module: {
     rules: [
@@ -38,6 +40,13 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
+    }),
+    new FileManagerPlugin({
+        onEnd: {
+            copy: [
+                {source: './dist/', destination: './docs/'}
+            ]
+        }
     })
   ]
 };
