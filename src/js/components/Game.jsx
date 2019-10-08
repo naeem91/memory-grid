@@ -27,7 +27,7 @@ class Game extends React.Component {
                 setTimeout(()=>{
                     this.setState({gameState: GameState.WON});
                     this.nextLevel();
-                }, 500);
+                }, 300);
             }
         }else{
             this.guesses.incorrect.push(guess);
@@ -35,7 +35,7 @@ class Game extends React.Component {
             if(this.guesses.incorrect.length >= this.props.incorrectAllowed){
                 setTimeout(()=>{
                     this.setState({gameState: GameState.ENDED});
-                }, 500);
+                }, 300);
             }
         }
     }
