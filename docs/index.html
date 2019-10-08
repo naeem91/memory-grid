@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Memory Grid</title>
+    <style>
+        body{
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        li{
+            cursor: default;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .row{
+            margin-bottom: 0;
+        }
+        .grid{
+            margin-top: 8px;
+        }
+        .card-panel{
+            margin: 0;
+        }
+        .cell {
+          height: 110px;
+        }
+        .incorrect {
+          background-color: red;
+        }
+        .correct {
+          background-color: green;
+        }
+        .active { background-color: #058BDA; }
+        .original { background-color: rgb(218, 151, 5); }
+        #transition-modal-title { color: white; }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+<script type="text/javascript" src="main.js"></script></body>
+</html>
