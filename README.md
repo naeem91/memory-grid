@@ -1,6 +1,6 @@
-<p align="center">
+<h1 align="center">
   <img src="docs/src/img/logo.png?raw=true" width="60" title="Logo">
-</p>
+</h1>
 
 ReactJS based memory grid game.
 
