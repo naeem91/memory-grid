@@ -1,4 +1,8 @@
-# memory-grid
+# memory-grid 
+<p align="center">
+  <img src="docs/src/img/logo.png?raw=true" width="80" title="Logo">
+</p>
+
 ReactJS based memory grid game.
 
 This game is created as an exercise given in the [React.js Succinctly](https://www.syncfusion.com/ebooks/reactjs_succinctly) book.
