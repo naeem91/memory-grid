@@ -46,7 +46,7 @@ class Game extends React.Component {
         this.gameController.restart();
     }
     componentDidMount(){
-        this.setState({gameState: GameState.READY, modalOpen: true});
+        this.setState({gameState: GameState., modalOpen: true});
         setTimeout(() => {
             this.setState({gameState: GameState.MEMORIZE, modalOpen: true});
             setTimeout(() => {
