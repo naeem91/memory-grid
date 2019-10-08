@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="docs/src/img/logo.png?raw=true" width="60" title="Logo">
+  <img src="docs/src/img/logo.png?raw=true" width="60" title="Logo" />
 </h1>
 
 ReactJS based memory grid game.
